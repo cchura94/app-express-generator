@@ -5,11 +5,11 @@ const bd = require("./bd");
 const Usuario = bd.define("Usuario", {
     nombres: {
         type: Sequelize.STRING(50),
-        unique:  true
+        
     },
     apellidos: {
         type: Sequelize.STRING(50),
-        unique:  true
+        
     },
     correo: {
         type: Sequelize.STRING(50),

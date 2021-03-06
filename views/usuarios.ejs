@@ -40,8 +40,73 @@
                   <td><%= user.estado %></td>
                   <td>
                     <a href="" class="btn btn-success">mostrar</a>
-                    <a href="" class="btn btn-warning">editar</a>
-                    <a href="" class="btn btn-danger">eliminar</a>
+           
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#Modal<%= user.id %>">
+  editar
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="Modal<%= user.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/users/<%= user.id %>/modificar" method="post">
+        
+      <div class="modal-body">
+          <label for="">NOMBRES</label>
+          <input type="text" name="nombres" class="form-control" value="<%= user.nombres %>">
+          
+          <label for="">APELLIDOS</label>
+          <input type="text" name="apellidos" class="form-control" value="<%= user.apellidos %>">
+      
+          <label for="">CORREO</label>
+          <input type="email" name="correo" class="form-control" value="<%= user.correo %>">
+      
+          <label for="">CLAVE</label>
+          <input type="password" name="clave" class="form-control" value="<%= user.clave %>">
+      
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-success">Modificar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalElim<%= user.id %>">
+  eliminar
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalElim<%= user.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        
+      <div class="modal-body">
+          <p>¿Está seguro de Eliminar a <%= user.nombres %>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <form action="/users/<%= user.id %>" method="post">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
                   </td>
                 </tr>
                 <% }); %>
@@ -57,6 +122,7 @@
     </div>
 
    
+
     
     
   </body>
